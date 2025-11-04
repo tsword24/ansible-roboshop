@@ -2,8 +2,8 @@
   hosts: local
   connection: local
   vars:
-    ami_id: "ami-09c813fb71547fc4f"
-    sg_id: "sg-0a97a62e138263506"
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: sg-0a97a62e138263506
     zone_id: "Z02343572Y2FGSE24I49V"
     domain_name: "ssnationals.fun"
     instances:
@@ -19,3 +19,7 @@
           Name: "{{ item }}"
     loop: "{{ instances }}"
     register: ec2_output
+
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
