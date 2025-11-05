@@ -8,6 +8,7 @@
     domain_name: "ssnationals.fun"
     instances:
     - mongodb
+    - redis
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
