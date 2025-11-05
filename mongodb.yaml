@@ -20,6 +20,6 @@
   
   - name: Start service httpd, if not started
     ansible.builtin.service:
-      name: mongodb
+      name: mongod
       state: started
       enabled: yes
