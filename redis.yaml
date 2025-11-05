@@ -25,7 +25,7 @@
       regexp: 'protected-mode'
       replace: 'protected-mode no'
 
-  - name: Start service httpd, if not started
+  - name: Start service redis, if not started
     ansible.builtin.service:
       name: redis
       state: started
