@@ -1,0 +1,24 @@
+- name: setup mongo servers
+  hosts: mongodb
+  tasks:
+  - name: copy repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
+  - name: Install mongodb
+    ansible.builtin.package:
+      name: mongodb-org
+      state: present
+
+  - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+    ansible.builtin.replace:
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
+  
+  - name: Start service httpd, if not started
+    ansible.builtin.service:
+      name: mongodb
+      state: started
+      enabled: yes
